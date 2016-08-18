@@ -1,5 +1,11 @@
 package com.zdpractice.hworkservice.support.networktool;
 
+import android.widget.Toast;
+
+import com.alibaba.fastjson.JSON;
+import com.zdpractice.hworkservice.MyApplication;
+import com.zdpractice.hworkservice.model.UserParentBean;
+
 import org.xutils.common.Callback;
 import org.xutils.http.RequestParams;
 import org.xutils.x;
@@ -8,7 +14,7 @@ import org.xutils.x;
  * Created by 15813 on 2016/8/15.
  */
 public class NetWorkTools {
-
+    private static String url="http://192.168.0.158:8080/exj/removte";
     private RequestParams requestParams;
     private static NetWorkTools netWorkTools;
 
@@ -29,13 +35,15 @@ public class NetWorkTools {
         //TODO 登录URL
         requestParams=new RequestParams("url");
         //添加参数
-        requestParams.addBodyParameter("method","app/login/ artistLogin");
+        requestParams.addBodyParameter("method","app/login/artistLogin");
         requestParams.addBodyParameter("loginname",name);
         requestParams.addBodyParameter("password",pwd);
         getJson(requestParams, new Callback.CommonCallback<String>() {
             @Override
             public void onSuccess(String result) {
                 //TODO 根据返回实例，封装实体类
+                UserParentBean userParentBean= JSON.parseObject(result,UserParentBean.class);
+                MyApplication.userBean=userParentBean.getData();
             }
 
             @Override
