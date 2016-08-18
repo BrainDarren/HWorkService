@@ -1,9 +1,9 @@
 package com.zdpractice.hworkservice.ui.person;
 
-import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,15 +14,11 @@ import com.zdpractice.hworkservice.R;
 /**
  * Created by 15813 on 2016/8/15.
  */
-public class personFragment extends Fragment{
-    public personFragment() {
-    }
+public class PersonBaseFragment extends Fragment {
 
-    public static personFragment newInstance(String param) {
-
+    public static PersonBaseFragment newInstance() {
         Bundle args = new Bundle();
-
-        personFragment fragment = new personFragment();
+        PersonBaseFragment fragment = new PersonBaseFragment();
         fragment.setArguments(args);
         return fragment;
     }
@@ -46,45 +42,46 @@ public class personFragment extends Fragment{
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(),InfoActivity.class);
-                           }
+                startActivity(intent);
+            }
         });
 
         btnpopu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(),PupolartityAcivity.class);
-
+                startActivity(intent);
             }
         });
         btnwallet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(),WalletActivity.class);
-
+                startActivity(intent);
             }
         });
         btnabout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(),AboutActivity.class);
-
+                startActivity(intent);
             }
         });
         btnnotice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(),NoticeActivity.class);
-
+                startActivity(intent);
             }
         });
         btnsetting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(),InfoActivity.class);
-
+                startActivity(intent);
             }
         });
-        return super.onCreateView(inflater, container, savedInstanceState);
+        return view;
 
     }
 }

@@ -15,6 +15,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".ui.person.AboutActivity">
+
+        </activity>
+
+        <activity android:name=".ui.person.InfoActivity"></activity>
+        <activity android:name=".ui.person.NoticeActivity"></activity>
+        <activity android:name=".ui.person.PupolartityAcivity"></activity>
+        <activity android:name=".ui.person.SetingActivity"></activity>
+        <activity android:name=".ui.person.WalletActivity"></activity>
     </application>
 
 </manifest>

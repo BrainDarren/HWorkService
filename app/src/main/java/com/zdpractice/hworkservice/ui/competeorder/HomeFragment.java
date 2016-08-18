@@ -3,9 +3,7 @@ package com.zdpractice.hworkservice.ui.competeorder;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -58,7 +56,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         fragmentArrayList=new ArrayList<Fragment>();
         fragmentArrayList.add(competeFragment);
         fragmentArrayList.add(foughtFragment);
-        viewPager.setAdapter(new HomeVPAdapter(getActivity().getSupportFragmentManager(),fragmentArrayList));
+
+        viewPager.setAdapter(new HomeVPAdapter(getChildFragmentManager(),fragmentArrayList));
         viewPager.setCurrentItem(0,false);
         tvShowFought.setOnClickListener(this);
         tvShowOrder.setOnClickListener(this);
@@ -69,7 +68,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.tvShowFought:
-                Log.v("click_tvshowFought","aa");
                 viewPager.setCurrentItem(1,false);
                 break;
             case R.id.tvShowOrder:

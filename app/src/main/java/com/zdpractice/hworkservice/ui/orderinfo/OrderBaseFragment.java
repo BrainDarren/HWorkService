@@ -46,7 +46,6 @@ public class OrderBaseFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view=inflater.inflate(R.layout.orderinfo_base,container,false);
-        Log.v("OrderBaseFragment","orderbasefragment");
         tl_Orderinfo= (TabLayout) view.findViewById(R.id.tl_Orderinfo);
         vp_Orderinfo= (ViewPager) view.findViewById(R.id.vp_Orderinfo);
 
@@ -56,7 +55,7 @@ public class OrderBaseFragment extends Fragment {
         fragmentArrayList.add(orderSuccessFragment);
         fragmentArrayList.add(orderEverFragment);
 
-        vp_Orderinfo.setAdapter(new OrderInfoVPAdapter(getActivity().getSupportFragmentManager(),fragmentArrayList));
+        vp_Orderinfo.setAdapter(new OrderInfoVPAdapter(getChildFragmentManager(),fragmentArrayList));
         tl_Orderinfo.setupWithViewPager(vp_Orderinfo);
         tl_Orderinfo.setTabMode(TabLayout.MODE_SCROLLABLE);
         return view;
