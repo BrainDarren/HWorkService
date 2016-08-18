@@ -34,6 +34,7 @@ public class DingDFragment extends Fragment {
         args.putInt(ARG_PARAM1, param1);
         fragment.setArguments(args);
         return fragment;
+
     }
 
     @Override
