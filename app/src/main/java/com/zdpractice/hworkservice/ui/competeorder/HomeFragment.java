@@ -68,9 +68,11 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.tvShowFought:
+                //切换到竞单中Fragment
                 viewPager.setCurrentItem(1,false);
                 break;
             case R.id.tvShowOrder:
+                //切换到选择竞单Fragment
                 viewPager.setCurrentItem(0,false);
                 break;
         }
