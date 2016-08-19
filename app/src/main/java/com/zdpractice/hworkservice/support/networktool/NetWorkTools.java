@@ -17,6 +17,7 @@ public class NetWorkTools {
     private static String url="http://192.168.0.158:8080/exj/removte";
     private RequestParams requestParams;
     private static NetWorkTools netWorkTools;
+    public  UserParentBean userParentBean;
 
     public static NetWorkTools newInstance(){
         if (netWorkTools==null){
@@ -31,9 +32,10 @@ public class NetWorkTools {
      * @param name 用户名
      * @param pwd 密码
      */
-    public void requestLog(String name,String pwd) {
+    public UserParentBean requestLog(String name, String pwd) {
         //TODO 登录URL
-        requestParams=new RequestParams("url");
+        userParentBean=new UserParentBean();
+        requestParams=new RequestParams(url);
         //添加参数
         requestParams.addBodyParameter("method","app/login/artistLogin");
         requestParams.addBodyParameter("loginname",name);
@@ -42,7 +44,7 @@ public class NetWorkTools {
             @Override
             public void onSuccess(String result) {
                 //TODO 根据返回实例，封装实体类
-                UserParentBean userParentBean= JSON.parseObject(result,UserParentBean.class);
+                 userParentBean= JSON.parseObject(result,UserParentBean.class);
                 MyApplication.userBean=userParentBean.getData();
             }
 
@@ -62,6 +64,7 @@ public class NetWorkTools {
             }
         });
         requestParams=null;
+        return userParentBean;
     }
 
     /**
@@ -71,7 +74,7 @@ public class NetWorkTools {
      */
     public void requestCompeteOrder(String token,String userid){
         //TODO 获取竞单URL
-        requestParams=new RequestParams("url");
+        requestParams=new RequestParams(url);
         //添加参数
         requestParams.addBodyParameter("method","order/getFightingOrderList");
         requestParams.addBodyParameter("token",token);
@@ -107,7 +110,7 @@ public class NetWorkTools {
      */
     public void requestWorkingOrder(String token,String userid){
         //TODO 获取已抢单URL
-        requestParams=new RequestParams("url");
+        requestParams=new RequestParams(url);
         //添加参数
         requestParams.addBodyParameter("method","order/getFoughtOrderList");
         requestParams.addBodyParameter("token",token);
@@ -151,7 +154,7 @@ public class NetWorkTools {
                                  String pageSize,String servicestate,
                                  String status,String yMonth,String providerJudgeLevel){
         //TODO 获取历史订单URL
-        requestParams=new RequestParams("url");
+        requestParams=new RequestParams(url);
         //添加参数
         requestParams.addBodyParameter("method","order/getMyOrderList");
         requestParams.addBodyParameter("token",token);
@@ -196,7 +199,7 @@ public class NetWorkTools {
     public void requestConfirmOrder(String token,String orderId,String price,
                                     String providerId){
         //TODO 抢单URL
-        requestParams=new RequestParams("url");
+        requestParams=new RequestParams(url);
         requestParams.addBodyParameter("method","order/grabOrder");
         //添加参数
         requestParams.addBodyParameter("token",token);
@@ -236,7 +239,7 @@ public class NetWorkTools {
      */
     public void requestMonthIncome(String token,
                                    String orderno,String yMonth,String userid){
-        requestParams=new RequestParams("url");
+        requestParams=new RequestParams(url);
 
         //添加参数
         requestParams.addBodyParameter("method","provider/getMyIncomeThisMonth");
