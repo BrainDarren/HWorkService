@@ -32,7 +32,7 @@ public class NetWorkTools {
      * @param name 用户名
      * @param pwd 密码
      */
-    public UserParentBean requestLog(String name, String pwd) {
+    public void requestLog(String name, String pwd) {
         //TODO 登录URL
         userParentBean=new UserParentBean();
         requestParams=new RequestParams(url);
@@ -64,7 +64,6 @@ public class NetWorkTools {
             }
         });
         requestParams=null;
-        return userParentBean;
     }
 
     /**

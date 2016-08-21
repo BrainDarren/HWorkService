@@ -17,7 +17,11 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.zdpractice.hworkservice.MainActivity;
+import com.zdpractice.hworkservice.MyApplication;
 import com.zdpractice.hworkservice.R;
+import com.zdpractice.hworkservice.model.UserParentBean;
+import com.zdpractice.hworkservice.support.networktool.AES;
+import com.zdpractice.hworkservice.support.networktool.NetWorkTools;
 
 /**
  * Created by 15813 on 2016/8/15.
@@ -33,6 +37,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     private Button btn_login;
     private ImageView name_clear,pwd_clear;
     private SharedPreferences pregerences;
+    private NetWorkTools netWorkTools;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +62,13 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             username.setText(pregerences.getString("用户名",""));
             userpwd.setText(pregerences.getString("密码",""));
             if(pregerences.getBoolean("自动登陆",false)){
+
+                //访问网络给Application的UserBean赋值
+                netWorkTools=new NetWorkTools();
+                String  pwd1 = AES.encode(userpwd.getText().toString());
+                String name=username.getText().toString();
+                netWorkTools.requestLog(name,pwd1);
+
                 cb_AutoLogin.setChecked(true);
                 Intent intent=new Intent(Login.this,MainActivity.class);
                 startActivity(intent);
@@ -142,8 +155,13 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                 String pwd = userpwd.getText().toString();
                 if (name.matches("1\\d{10}")) {
                     if (pwd.matches("\\w{6,10}")) {
+
                         //联网判定用户是否否在
-                        //if(null){
+                        //访问网络给Application的UserBean赋值
+                        netWorkTools=new NetWorkTools();
+                        String  pwd1 = AES.encode(pwd);
+                        netWorkTools.requestLog(name,pwd1);
+
                         if(cb_Remember.isChecked()) {
                             SharedPreferences.Editor editor = pregerences.edit();
                             editor.putString("用户名", name);

@@ -20,6 +20,7 @@ public class UserBean {
     private  int	userType;	//用户类型
     private  int	balance;	//账户余额
     private  int	status;	//状态
+    private String token;//token
 
     public int getId() {
         return id;
@@ -147,5 +148,13 @@ public class UserBean {
 
     public void setStatus(int status) {
         this.status = status;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 }
