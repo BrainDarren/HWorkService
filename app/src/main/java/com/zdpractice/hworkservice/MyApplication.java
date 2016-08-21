@@ -2,6 +2,8 @@ package com.zdpractice.hworkservice;
 
 import android.app.Application;
 
+import com.zdpractice.hworkservice.model.UserBean;
+
 import org.xutils.x;
 
 /**
@@ -13,7 +15,7 @@ public class MyApplication extends Application {
      * 此应用的token，在登陆页面赋值
      */
     public static String token;
-
+    public static UserBean userBean;
     @Override
     public void onCreate() {
         super.onCreate();
