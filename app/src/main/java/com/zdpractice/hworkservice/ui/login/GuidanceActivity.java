@@ -37,7 +37,7 @@ public class GuidanceActivity extends Activity{
 
             @Override
             public void onAnimationEnd(Animation animation) {
-                Intent intent=new Intent(GuidanceActivity.this,LoginActivity.class);
+                Intent intent=new Intent(GuidanceActivity.this,Login.class);
                 startActivity(intent);
                 finish();
             }
